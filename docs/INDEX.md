@@ -85,7 +85,7 @@ docs/
 ## 🔗 Ressources externes
 
 - **GitHub Repository** : [Rqbln/GCPU-hackathon-vertex](https://github.com/Rqbln/GCPU-hackathon-vertex)
-- **Google Cloud Console** : [mental-journal-dev](https://console.cloud.google.com/home/dashboard?project=mental-journal-dev)
+- **Google Cloud Console** : [build-unicorn25par-4813](https://console.cloud.google.com/home/dashboard?project=build-unicorn25par-4813)
 - **FastAPI Documentation** : https://fastapi.tiangolo.com
 - **Vertex AI Docs** : https://cloud.google.com/vertex-ai/docs
 - **Gemini API** : https://ai.google.dev/gemini-api/docs

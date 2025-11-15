@@ -18,7 +18,6 @@ async def list_weeks():
     """
     **Liste toutes les semaines disponibles**
     
-    """
     Scanne le bucket `pz-analytics` pour trouver tous les préfixes de semaines.
     Retourne une liste triée ["2025-W41", "2025-W42", ...].
     
@@ -78,7 +77,6 @@ async def list_sessions(week: str):
     """
     **Liste toutes les sessions d'une semaine**
     
-        """
     Retourne les `session_id` trouvés sous `pz-analytics/{week}/`.
     Format attendu : `pz-analytics/{week}/{session_id}/transcript.json`, etc.
     

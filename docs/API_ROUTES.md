@@ -59,12 +59,12 @@ curl http://localhost:8080/config
 **Réponse :**
 ```json
 {
-  "project_id": "mental-journal-dev",
+  "project_id": "build-unicorn25par-4813",
   "region": "europe-west1",
   "buckets": {
-    "raw": "mj-audio-raw-mental-journal-dev",
-    "analytics": "mj-analytics-mental-journal-dev",
-    "reports": "mj-reports-mental-journal-dev"
+    "raw": "pz-audio-raw-build-unicorn25par-4813",
+    "analytics": "mj-analytics-build-unicorn25par-4813",
+    "reports": "mj-reports-build-unicorn25par-4813"
   },
   "gemini_model": "gemini-2.0-flash-exp",
   "location": "global"
@@ -114,9 +114,9 @@ return (
 **Réponse :**
 ```json
 {
-  "upload_url": "https://storage.googleapis.com/mj-audio-raw-mental-journal-dev/2025-W42/session_001.wav?X-Goog-Algorithm=...",
+  "upload_url": "https://storage.googleapis.com/pz-audio-raw-build-unicorn25par-4813/2025-W42/session_001.wav?X-Goog-Algorithm=...",
   "object_path": "2025-W42/session_001.wav",
-  "bucket": "mj-audio-raw-mental-journal-dev",
+  "bucket": "pz-audio-raw-build-unicorn25par-4813",
   "expires_in_seconds": 3600
 }
 ```
@@ -184,10 +184,10 @@ const uploadAudio = useMutation({
   "session_id": "session_001",
   "week": "2025-W42",
   "artifacts": {
-    "transcript": "gs://mj-analytics-mental-journal-dev/2025-W42/session_001/transcript.json",
-    "prosody": "gs://mj-analytics-mental-journal-dev/2025-W42/session_001/prosody_features.json",
-    "nlu": "gs://mj-analytics-mental-journal-dev/2025-W42/session_001/events_emotions.json",
-    "audio_uri": "gs://mj-audio-raw-mental-journal-dev/2025-W42/session_001.wav"
+    "transcript": "gs://mj-analytics-build-unicorn25par-4813/2025-W42/session_001/transcript.json",
+    "prosody": "gs://mj-analytics-build-unicorn25par-4813/2025-W42/session_001/prosody_features.json",
+    "nlu": "gs://mj-analytics-build-unicorn25par-4813/2025-W42/session_001/events_emotions.json",
+    "audio_uri": "gs://pz-audio-raw-build-unicorn25par-4813/2025-W42/session_001.wav"
   }
 }
 ```

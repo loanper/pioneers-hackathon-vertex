@@ -9,11 +9,11 @@ from datetime import datetime
 
 router = APIRouter()
 
-PROJECT_ID = os.environ.get("PROJECT_ID", "mental-journal-dev")
+PROJECT_ID = os.environ.get("PROJECT_ID", "build-unicorn25par-4813")
 REGION = os.environ.get("REGION", "europe-west1")
-BUCKET_RAW = os.environ.get("BUCKET_RAW", "mj-audio-raw-mental-journal-dev")
-BUCKET_ANALYTICS = os.environ.get("BUCKET_ANALYTICS", "mj-analytics-mental-journal-dev")
-BUCKET_REPORTS = os.environ.get("BUCKET_REPORTS", "mj-reports-mental-journal-dev")
+BUCKET_RAW = os.environ.get("BUCKET_RAW", "pz-audio-raw-build-unicorn25par-4813")
+BUCKET_ANALYTICS = os.environ.get("BUCKET_ANALYTICS", "pz-analytics-build-unicorn25par-4813")
+BUCKET_REPORTS = os.environ.get("BUCKET_REPORTS", "pz-reports-build-unicorn25par-4813")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash-exp")
 
 
@@ -35,13 +35,14 @@ async def healthz():
     {
       "status": "healthy",
       "timestamp": "2025-10-22T10:30:00Z",
-      "service": "mental-journal-api"
+      "service": "pizza-api"
     }
     ```
     """
     return {
         "status": "healthy",
         "service": "pizza-api",
+    }
 @router.get("/config")
 async def get_config():
     """

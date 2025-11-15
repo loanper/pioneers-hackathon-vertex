@@ -191,7 +191,7 @@ api/
 
 | Variable | Description | Défaut |
 |----------|-------------|--------|
-| `PROJECT_ID` | ID du projet GCP | `mental-journal-dev` |
+| `PROJECT_ID` | ID du projet GCP | `build-unicorn25par-4813` |
 | `REGION` | Région GCP | `europe-west1` |
 | `BUCKET_RAW` | Bucket audio brut | `mj-audio-raw-*` |
 | `BUCKET_ANALYTICS` | Bucket analytics | `mj-analytics-*` |

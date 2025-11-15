@@ -48,9 +48,9 @@ cd /Users/omarbesbes/Documents/GCPU-hackathon-vertex
 ✅ Processing completed successfully!
 
 📊 Generated Artifacts:
-   transcript: gs://mj-analytics-mental-journal-dev/2025-W44/session_001/transcript.json
-   prosody: gs://mj-analytics-mental-journal-dev/2025-W44/session_001/prosody_features.json
-   nlu: gs://mj-analytics-mental-journal-dev/2025-W44/session_001/events_emotions.json
+   transcript: gs://pz-analytics-build-unicorn25par-4813/2025-W44/session_001/transcript.json
+   prosody: gs://pz-analytics-build-unicorn25par-4813/2025-W44/session_001/prosody_features.json
+   nlu: gs://pz-analytics-build-unicorn25par-4813/2025-W44/session_001/events_emotions.json
 ```
 
 ### Generate Weekly Report
@@ -62,23 +62,23 @@ bash scripts/run_pipeline.sh 2025-W44
 **Output:**
 ```
 ✅ Execution completed!
-📊 Check reports at: gs://mj-reports-mental-journal-dev/2025-W44/
+📊 Check reports at: gs://pz-reports-build-unicorn25par-4813/2025-W44/
 ```
 
 ### View Results
 
 ```bash
 # View transcript
-gsutil cat gs://mj-analytics-mental-journal-dev/2025-W44/session_001/transcript.json | jq -r '.transcript'
+gsutil cat gs://pz-analytics-build-unicorn25par-4813/2025-W44/session_001/transcript.json | jq -r '.transcript'
 
 # View emotions
-gsutil cat gs://mj-analytics-mental-journal-dev/2025-W44/session_001/events_emotions.json | jq '.emotions'
+gsutil cat gs://pz-analytics-build-unicorn25par-4813/2025-W44/session_001/events_emotions.json | jq '.emotions'
 
 # View prosody
-gsutil cat gs://mj-analytics-mental-journal-dev/2025-W44/session_001/prosody_features.json | jq .
+gsutil cat gs://pz-analytics-build-unicorn25par-4813/2025-W44/session_001/prosody_features.json | jq .
 
 # Download weekly report
-gsutil cp gs://mj-reports-mental-journal-dev/2025-W44/weekly_report.html .
+gsutil cp gs://pz-reports-build-unicorn25par-4813/2025-W44/weekly_report.html .
 open weekly_report.html  # macOS
 ```
 
@@ -207,9 +207,9 @@ thing. It was just completely overwhelming..."
 - **Status**: ✅ Deployed
 
 ### 3. Storage Buckets
-- **mj-audio-raw-mental-journal-dev**: Raw audio files
-- **mj-analytics-mental-journal-dev**: Processed artifacts (JSON)
-- **mj-reports-mental-journal-dev**: Weekly reports (HTML/PDF)
+- **pz-audio-raw-build-unicorn25par-4813**: Raw audio files
+- **pz-analytics-build-unicorn25par-4813**: Processed artifacts (JSON)
+- **pz-reports-build-unicorn25par-4813**: Weekly reports (HTML/PDF)
 
 ---
 

@@ -3,7 +3,7 @@
 **Regions & names (you can keep or change):**
 
 * **Region:** `europe-west1` (Belgium)
-* **PROJECT_ID:** `mental-journal-dev`
+* **PROJECT_ID:** `build-unicorn25par-4813`
 * **GCS buckets:**
 
   * `mj-audio-raw-<PROJECT_ID>` (source WAV/MP3/FLAC)
@@ -40,7 +40,7 @@
 
 ```bash
 # 1) Créer le projet
-PROJECT_ID=mental-journal-dev
+PROJECT_ID=build-unicorn25par-4813
 BILLING_ACCOUNT=<YOUR_BILLING_ACCOUNT>
 gcloud projects create $PROJECT_ID --name="Mental Journal Dev"
 gcloud beta billing projects link $PROJECT_ID --billing-account=$BILLING_ACCOUNT

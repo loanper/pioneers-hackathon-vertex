@@ -33,7 +33,7 @@ Copy `mcp-config.json` content to your Claude Desktop config:
       ],
       "env": {
         "GOOGLE_APPLICATION_CREDENTIALS": "/home/rqbin/.config/gcloud/application_default_credentials.json",
-        "GOOGLE_CLOUD_PROJECT": "mental-journal-dev"
+        "GOOGLE_CLOUD_PROJECT": "build-unicorn25par-4813"
       }
     }
   }
@@ -48,9 +48,9 @@ Copy `mcp-config.json` content to your Claude Desktop config:
 
 **Example prompts:**
 ```
-"Show me logs from mental-journal-dev Cloud Run job from the last hour"
+"Show me logs from build-unicorn25par-4813 Cloud Run job from the last hour"
 "Search for logs containing 'Gemini' from mj-weekly-pipeline"
-"Find errors in project mental-journal-dev yesterday"
+"Find errors in project build-unicorn25par-4813 yesterday"
 ```
 
 ### Billing
@@ -60,8 +60,8 @@ Copy `mcp-config.json` content to your Claude Desktop config:
 
 **Example prompts:**
 ```
-"Analyse costs for mental-journal-dev for the last 30 days"
-"Detect billing anomalies in project mental-journal-dev"
+"Analyse costs for build-unicorn25par-4813 for the last 30 days"
+"Detect billing anomalies in project build-unicorn25par-4813"
 "Generate cost recommendations for Speech-to-Text and Gemini APIs"
 ```
 
@@ -72,7 +72,7 @@ Copy `mcp-config.json` content to your Claude Desktop config:
 **Example prompts:**
 ```
 "Show CPU utilisation for mj-weekly-pipeline for the last 6 hours"
-"Query memory usage for Cloud Run job in mental-journal-dev"
+"Query memory usage for Cloud Run job in build-unicorn25par-4813"
 ```
 
 ### IAM
@@ -82,9 +82,9 @@ Copy `mcp-config.json` content to your Claude Desktop config:
 
 **Example prompts:**
 ```
-"Get IAM policy for mental-journal-dev"
+"Get IAM policy for build-unicorn25par-4813"
 "Test if zpro4@outlook.com has Cloud Run permissions"
-"Check deployment permissions for Cloud Run in mental-journal-dev"
+"Check deployment permissions for Cloud Run in build-unicorn25par-4813"
 ```
 
 ### Error Reporting
@@ -93,7 +93,7 @@ Copy `mcp-config.json` content to your Claude Desktop config:
 
 **Example prompts:**
 ```
-"Show error groups from mental-journal-dev for the last 24 hours"
+"Show error groups from build-unicorn25par-4813 for the last 24 hours"
 "Analyse error trends for mj-weekly-pipeline"
 ```
 
@@ -111,17 +111,17 @@ Then open http://localhost:5173 to test tools interactively.
 
 1. **Get recent logs:**
 ```
-Query logs from mental-journal-dev Cloud Run job for the last hour
+Query logs from build-unicorn25par-4813 Cloud Run job for the last hour
 ```
 
 2. **Check costs:**
 ```
-Analyse costs for mental-journal-dev for the last 7 days
+Analyse costs for build-unicorn25par-4813 for the last 7 days
 ```
 
 3. **View permissions:**
 ```
-Get IAM policy for project mental-journal-dev
+Get IAM policy for project build-unicorn25par-4813
 ```
 
 ## Use Cases for Mental Journal

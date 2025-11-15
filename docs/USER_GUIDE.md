@@ -49,8 +49,8 @@ curl -X POST https://mj-api-34701717619.europe-west1.run.app/v1/sign-upload \
 **Response:**
 ```json
 {
-  "upload_url": "https://storage.googleapis.com/mj-audio-raw-mental-journal-dev/2025-W43/session_001.wav?X-Goog-Algorithm=...",
-  "gcs_uri": "gs://mj-audio-raw-mental-journal-dev/2025-W43/session_001.wav",
+  "upload_url": "https://storage.googleapis.com/pz-audio-raw-build-unicorn25par-4813/2025-W43/session_001.wav?X-Goog-Algorithm=...",
+  "gcs_uri": "gs://pz-audio-raw-build-unicorn25par-4813/2025-W43/session_001.wav",
   "expires_in": 3600
 }
 ```
@@ -74,7 +74,7 @@ curl -X PUT "<UPLOAD_URL_FROM_STEP_1>" \
 
 **Example:**
 ```bash
-curl -X PUT "https://storage.googleapis.com/mj-audio-raw-mental-journal-dev/2025-W43/session_001.wav?X-Goog-Algorithm=..." \
+curl -X PUT "https://storage.googleapis.com/pz-audio-raw-build-unicorn25par-4813/2025-W43/session_001.wav?X-Goog-Algorithm=..." \
   -H "Content-Type: audio/wav" \
   --data-binary @my_journal_entry.wav
 ```
@@ -107,10 +107,10 @@ curl -X POST https://mj-api-34701717619.europe-west1.run.app/v1/ingest/finish \
   "session_id": "session_001",
   "week": "2025-W43",
   "artifacts": {
-    "transcript": "gs://mj-analytics-mental-journal-dev/2025-W43/session_001/transcript.json",
-    "prosody": "gs://mj-analytics-mental-journal-dev/2025-W43/session_001/prosody_features.json",
-    "nlu": "gs://mj-analytics-mental-journal-dev/2025-W43/session_001/events_emotions.json",
-    "audio_uri": "gs://mj-audio-raw-mental-journal-dev/2025-W43/session_001.wav"
+    "transcript": "gs://pz-analytics-build-unicorn25par-4813/2025-W43/session_001/transcript.json",
+    "prosody": "gs://pz-analytics-build-unicorn25par-4813/2025-W43/session_001/prosody_features.json",
+    "nlu": "gs://pz-analytics-build-unicorn25par-4813/2025-W43/session_001/events_emotions.json",
+    "audio_uri": "gs://pz-audio-raw-build-unicorn25par-4813/2025-W43/session_001.wav"
   }
 }
 ```
@@ -126,7 +126,7 @@ curl -X POST https://mj-api-34701717619.europe-west1.run.app/v1/ingest/finish \
 Full transcription with word-level timestamps:
 
 ```bash
-gsutil cat gs://mj-analytics-mental-journal-dev/2025-W43/session_001/transcript.json
+gsutil cat gs://pz-analytics-build-unicorn25par-4813/2025-W43/session_001/transcript.json
 ```
 
 **Contains:**
@@ -140,7 +140,7 @@ gsutil cat gs://mj-analytics-mental-journal-dev/2025-W43/session_001/transcript.
 Audio characteristics analysis:
 
 ```bash
-gsutil cat gs://mj-analytics-mental-journal-dev/2025-W43/session_001/prosody_features.json
+gsutil cat gs://pz-analytics-build-unicorn25par-4813/2025-W43/session_001/prosody_features.json
 ```
 
 **Metrics:**
@@ -154,7 +154,7 @@ gsutil cat gs://mj-analytics-mental-journal-dev/2025-W43/session_001/prosody_fea
 AI-powered emotional and event analysis using Gemini 2.0:
 
 ```bash
-gsutil cat gs://mj-analytics-mental-journal-dev/2025-W43/session_001/events_emotions.json
+gsutil cat gs://pz-analytics-build-unicorn25par-4813/2025-W43/session_001/events_emotions.json
 ```
 
 **Contains:**
@@ -180,16 +180,16 @@ bash scripts/run_pipeline.sh 2025-W43
 
 **Location:**
 ```
-gs://mj-reports-mental-journal-dev/2025-W43/
+gs://pz-reports-build-unicorn25par-4813/2025-W43/
 ```
 
 **Download Report:**
 ```bash
 # Download HTML
-gsutil cp gs://mj-reports-mental-journal-dev/2025-W43/weekly_report.html ./
+gsutil cp gs://pz-reports-build-unicorn25par-4813/2025-W43/weekly_report.html ./
 
 # Download PDF
-gsutil cp gs://mj-reports-mental-journal-dev/2025-W43/weekly_report.pdf ./
+gsutil cp gs://pz-reports-build-unicorn25par-4813/2025-W43/weekly_report.pdf ./
 
 # Open in browser
 open weekly_report.html
@@ -381,7 +381,7 @@ open https://mj-api-34701717619.europe-west1.run.app/docs
 **Solution**:
 - Verify upload succeeded (Step 2 returns HTTP 200)
 - Use exact same `week` and `session_id` in all steps
-- Check file exists: `gsutil ls gs://mj-audio-raw-mental-journal-dev/2025-W43/`
+- Check file exists: `gsutil ls gs://pz-audio-raw-build-unicorn25par-4813/2025-W43/`
 
 ### Upload URL Expired
 **Cause**: Signed URL is valid for 1 hour  
@@ -402,13 +402,13 @@ gcloud logging read 'resource.type="cloud_run_revision" AND resource.labels.serv
 All your data is stored in Google Cloud Storage:
 
 ```
-📁 mj-audio-raw-mental-journal-dev/
+📁 pz-audio-raw-build-unicorn25par-4813/
    └── 2025-W43/
        ├── session_001.wav
        ├── monday_morning.wav
        └── wednesday_evening.wav
 
-📁 mj-analytics-mental-journal-dev/
+📁 pz-analytics-build-unicorn25par-4813/
    └── 2025-W43/
        ├── session_001/
        │   ├── transcript.json
@@ -416,7 +416,7 @@ All your data is stored in Google Cloud Storage:
        │   └── events_emotions.json
        └── weekly_report.json
 
-📁 mj-reports-mental-journal-dev/
+📁 pz-reports-build-unicorn25par-4813/
    └── 2025-W43/
        ├── weekly_report.html
        └── weekly_report.pdf

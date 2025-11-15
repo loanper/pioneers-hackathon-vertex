@@ -47,7 +47,7 @@ Rapport PDF hebdomadaire
 
 ```bash
 # 1. Upload audio
-gsutil cp audio.wav gs://mj-audio-raw-mental-journal-dev/2025-W42/session_001.wav
+gsutil cp audio.wav gs://pz-audio-raw-build-unicorn25par-4813/2025-W42/session_001.wav
 
 # 2. Exécuter pipeline
 gcloud run jobs execute mj-weekly-pipeline --args=2025-W42

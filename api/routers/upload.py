@@ -17,7 +17,7 @@ from urllib.parse import quote
 
 router = APIRouter()
 
-BUCKET_RAW = os.environ.get("BUCKET_RAW", "mj-audio-raw-mental-journal-dev")
+BUCKET_RAW = os.environ.get("BUCKET_RAW", "pz-audio-raw-build-unicorn25par-4813")
 
 
 class SignUploadRequest(BaseModel):
@@ -61,9 +61,9 @@ async def sign_upload(request: SignUploadRequest):
     **Exemple de réponse:**
     ```json
     {
-      "upload_url": "https://storage.googleapis.com/mj-audio-raw-mental-journal-dev/2025-W42/session_001.wav?X-Goog-Algorithm=...",
+      "upload_url": "https://storage.googleapis.com/pz-audio-raw-build-unicorn25par-4813/2025-W42/session_001.wav?X-Goog-Algorithm=...",
       "object_path": "2025-W42/session_001.wav",
-      "bucket": "mj-audio-raw-mental-journal-dev",
+      "bucket": "pz-audio-raw-build-unicorn25par-4813",
       "expires_in_seconds": 3600
     }
     ```
@@ -305,7 +305,7 @@ async def ingest_finish(request: IngestFinishRequest):
         nlu_events_emotions, upload_json
     )
     
-    BUCKET_ANALYTICS = os.environ.get("BUCKET_ANALYTICS", "mj-analytics-mental-journal-dev")
+    BUCKET_ANALYTICS = os.environ.get("BUCKET_ANALYTICS", "pz-analytics-build-unicorn25par-4813")
     
     # Construct audio URI
     audio_uri = f"gs://{BUCKET_RAW}/{request.week}/{request.session_id}.wav"

@@ -18,7 +18,7 @@ Cette commande retourne :
 {
   "upload_url": "https://storage.googleapis.com/...",
   "object_path": "2025-W43/session_001.wav",
-  "bucket": "mj-audio-raw-mental-journal-dev",
+  "bucket": "pz-audio-raw-build-unicorn25par-4813",
   "expires_in_seconds": 3600
 }
 ```

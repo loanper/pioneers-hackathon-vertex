@@ -12,12 +12,12 @@
 ### Variables d'environnement
 - [ ] Copier `.env.example` vers `.env`
 - [ ] Remplir `BILLING_ACCOUNT` dans `.env`
-- [ ] Définir `PROJECT_ID` (par défaut: mental-journal-dev)
+- [ ] Définir `PROJECT_ID` (par défaut: build-unicorn25par-4813)
 - [ ] Définir `REGION` (par défaut: europe-west1)
 - [ ] Sourcer les variables: `source .env` ou utiliser `export`
 
 ```bash
-export PROJECT_ID="mental-journal-dev"
+export PROJECT_ID="build-unicorn25par-4813"
 export BILLING_ACCOUNT="XXXX-XXXX-XXXX-XXXX"
 export REGION="europe-west1"
 ```

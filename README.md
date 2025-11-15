@@ -122,7 +122,7 @@ Construit l’image Docker et déploie le **Cloud Run Job**.
 
 ```bash
 # Upload audio (ex. semaine 2025-W42)
-gsutil cp audio.wav gs://mj-audio-raw-mental-journal-dev/2025-W42/session_001.wav
+gsutil cp audio.wav gs://pz-audio-raw-build-unicorn25par-4813/2025-W42/session_001.wav
 
 # Execute pipeline for that week
 gcloud run jobs execute mj-weekly-pipeline --region=europe-west1 --args=2025-W42
@@ -189,7 +189,7 @@ Pour chaque semaine (ex. `2025-W42`) :
 ### Analytics (JSON)
 
 ```
-gs://mj-analytics-mental-journal-dev/2025-W42/
+gs://pz-analytics-build-unicorn25par-4813/2025-W42/
 ├── session_001/
 │   ├── transcript.json          # STT transcription
 │   ├── prosody_features.json    # Vocal features
@@ -200,9 +200,36 @@ gs://mj-analytics-mental-journal-dev/2025-W42/
 ### Reports (HTML/PDF)
 
 ```
-gs://mj-reports-mental-journal-dev/2025-W42/
+gs://pz-reports-build-unicorn25par-4813/2025-W42/
 ├── weekly_report.html
 └── weekly_report.pdf
+```
+
+---
+
+## 💰 Cost (approx.)
+
+**~ €0.30 / semaine** (≈ €1.20 / mois)
+
+* Speech-to-Text v2 : ~€0.10
+* Gemini (Flash/Pro) : ~€0.15
+* Storage + Compute : ~€0.05
+
+*(Dépend de la durée d'audio, du modèle Gemini et de la fréquence d'exécution.)*
+
+---
+
+## 📝 Configuration (Cloud Run Job — env vars)
+
+```bash
+PROJECT_ID=build-unicorn25par-4813
+REGION=europe-west1
+GOOGLE_CLOUD_LOCATION=global
+GEMINI_MODEL=gemini-2.0-flash-exp   # ou gemini-2.5-pro
+BUCKET_RAW=pz-audio-raw-build-unicorn25par-4813
+BUCKET_PROC=pz-audio-processed-build-unicorn25par-4813
+BUCKET_ANALYTICS=pz-analytics-build-unicorn25par-4813
+BUCKET_REPORTS=pz-reports-build-unicorn25par-4813
 ```
 
 ---
@@ -226,10 +253,10 @@ PROJECT_ID=mental-journal-dev
 REGION=europe-west1
 GOOGLE_CLOUD_LOCATION=global
 GEMINI_MODEL=gemini-2.0-flash-exp   # ou gemini-2.5-pro
-BUCKET_RAW=mj-audio-raw-mental-journal-dev
-BUCKET_PROC=mj-audio-processed-mental-journal-dev
-BUCKET_ANALYTICS=mj-analytics-mental-journal-dev
-BUCKET_REPORTS=mj-reports-mental-journal-dev
+BUCKET_RAW=pz-audio-raw-build-unicorn25par-4813
+BUCKET_PROC=pz-audio-processed-build-unicorn25par-4813
+BUCKET_ANALYTICS=pz-analytics-build-unicorn25par-4813
+BUCKET_REPORTS=pz-reports-build-unicorn25par-4813
 ```
 
 ---
@@ -453,10 +480,10 @@ gcloud run jobs execute mj-weekly-pipeline --args=$(date +'%G-W%V') --region=$RE
 gcloud logging read 'resource.type=cloud_run_job' --limit=20
 
 # List outputs
-gsutil ls gs://mj-analytics-mental-journal-dev/
+gsutil ls gs://pz-analytics-build-unicorn25par-4813/
 
 # Download report
-gsutil cp gs://mj-reports-mental-journal-dev/2025-W42/weekly_report.pdf ./
+gsutil cp gs://pz-reports-build-unicorn25par-4813/2025-W42/weekly_report.pdf ./
 ```
 
 ---

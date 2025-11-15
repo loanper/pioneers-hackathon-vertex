@@ -190,7 +190,7 @@ gcloud run jobs describe mj-weekly-pipeline --region=europe-west1
 gsutil ls -p mental-journal-dev
 
 # Télécharger un rapport
-gsutil cp gs://mj-reports-mental-journal-dev/2025-W42/weekly_report.pdf .
+gsutil cp gs://pz-reports-build-unicorn25par-4813/2025-W42/weekly_report.pdf .
 ```
 
 ---
@@ -276,7 +276,7 @@ gcloud config set project mental-journal-dev
 ### Erreur "No audio files found"
 ```bash
 # Vérifier l'upload
-gsutil ls gs://mj-audio-raw-mental-journal-dev/2025-W42/
+gsutil ls gs://pz-audio-raw-build-unicorn25par-4813/2025-W42/
 
 # Re-uploader
 ./upload_test_audio.sh 2025-W42 test.wav

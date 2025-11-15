@@ -91,7 +91,7 @@ chmod +x run_pipeline.sh
 Pour que le pipeline fonctionne, les fichiers audio doivent être organisés ainsi :
 
 ```
-gs://mj-audio-raw-mental-journal-dev/
+gs://pz-audio-raw-build-unicorn25par-4813/
   └── 2025-W42/
       ├── session_001.wav
       ├── session_002.wav

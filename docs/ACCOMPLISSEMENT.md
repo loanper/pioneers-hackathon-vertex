@@ -46,10 +46,10 @@ Déploiement complet d'une infrastructure Vertex AI pour analyser automatiquemen
 
 ### Cloud Storage (4 Buckets)
 ```
-mj-audio-raw-mental-journal-dev          # Audio source
-mj-audio-processed-mental-journal-dev    # Audio traité
-mj-analytics-mental-journal-dev          # JSON analytics
-mj-reports-mental-journal-dev            # HTML/PDF
+pz-audio-raw-build-unicorn25par-4813          # Audio source
+pz-audio-processed-build-unicorn25par-4813    # Audio traité
+pz-analytics-build-unicorn25par-4813          # JSON analytics
+pz-reports-build-unicorn25par-4813            # HTML/PDF
 ```
 - **Encryption** : CMEK avec Cloud KMS
 - **Lifecycle** : Suppression auto après 90 jours
@@ -157,7 +157,7 @@ vertex/
 ### 1. Upload Audio
 ```bash
 # Structure : gs://bucket/YYYY-Www/session_XXX.wav
-gsutil cp audio.wav gs://mj-audio-raw-mental-journal-dev/2025-W42/session_001.wav
+gsutil cp audio.wav gs://pz-audio-raw-build-unicorn25par-4813/2025-W42/session_001.wav
 ```
 
 ### 2. Exécution Pipeline
@@ -170,14 +170,14 @@ gcloud run jobs execute mj-weekly-pipeline --args=2025-W42
 
 ### 3. Outputs Générés
 ```
-gs://mj-analytics-mental-journal-dev/2025-W42/
+gs://pz-analytics-build-unicorn25par-4813/2025-W42/
 ├── session_001/
 │   ├── transcript.json           # STT avec timestamps
 │   ├── prosody_features.json     # Pitch/énergie/pauses
 │   └── events_emotions.json      # NLU Gemini
 └── weekly_report.json            # Synthèse complète
 
-gs://mj-reports-mental-journal-dev/2025-W42/
+gs://pz-reports-build-unicorn25par-4813/2025-W42/
 ├── weekly_report.html
 └── weekly_report.pdf
 ```
@@ -280,10 +280,10 @@ gcloud run jobs execute mj-weekly-pipeline --args=$(date +'%G-W%V')
 gcloud logging read "resource.type=cloud_run_job" --limit=50
 
 # Lister outputs
-gsutil ls gs://mj-analytics-mental-journal-dev/2025-W42/
+gsutil ls gs://pz-analytics-build-unicorn25par-4813/2025-W42/
 
 # Télécharger rapport
-gsutil cp gs://mj-reports-mental-journal-dev/2025-W42/weekly_report.pdf ./
+gsutil cp gs://pz-reports-build-unicorn25par-4813/2025-W42/weekly_report.pdf ./
 ```
 
 ---
