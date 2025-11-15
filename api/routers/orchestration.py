@@ -90,17 +90,18 @@ async def run_week(request: RunWeekRequest):
     try:
         client = run_v2.JobsClient()
         
-        # Run the Cloud Run Job with week argument
-        operation = client.run_job(
+        # Create execution request
+        request_obj = run_v2.RunJobRequest(
             name=JOB_NAME,
-            overrides=run_v2.RunJobRequest.Overrides(
-                container_overrides=[
-                    run_v2.RunJobRequest.Overrides.ContainerOverride(
-                        args=[request.week]
-                    )
-                ]
-            )
+            overrides={
+                "container_overrides": [{
+                    "args": [request.week]
+                }]
+            }
         )
+        
+        # Run the Cloud Run Job with week argument
+        operation = client.run_job(request=request_obj)
         
         # Extract execution name from operation
         execution_id = operation.name if hasattr(operation, 'name') else None
