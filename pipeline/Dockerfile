@@ -13,7 +13,7 @@ WORKDIR /app
 COPY pipeline/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY pipeline/main.py .
+COPY pipeline/*.py .
 COPY templates ./templates
 
 # Entrypoint accepts a week key, e.g. 2025-W41
