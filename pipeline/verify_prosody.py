@@ -33,11 +33,11 @@ def verify_prosody(audio_file: str):
         end = start + chunk_size
         chunk = audio[start:end]
         
-        result = analyzer.process_chunk(chunk)
+        result = analyzer.add_audio_chunk(chunk)
         if result:
             results.append(result)
-            emotion = result["dominant_emotion"]
-            conf = result["confidence"]
+            emotion = result["dominant_emotion"]["label"]
+            conf = result["dominant_emotion"]["confidence"]
             print(f"  Chunk {i+1}/{num_chunks}: {emotion} ({conf:.2f})")
     
     # Résumé
@@ -46,14 +46,14 @@ def verify_prosody(audio_file: str):
         print(f"  Total d'analyses: {len(results)}")
         
         # Émotion la plus fréquente
-        emotions = [r["dominant_emotion"] for r in results]
+        emotions = [r["dominant_emotion"]["label"] for r in results]
         most_common = max(set(emotions), key=emotions.count)
         frequency = emotions.count(most_common) / len(emotions) * 100
         
         print(f"  Émotion dominante: {most_common} ({frequency:.1f}% du temps)")
         
         # Confiance moyenne
-        avg_conf = np.mean([r["confidence"] for r in results])
+        avg_conf = np.mean([r["dominant_emotion"]["confidence"] for r in results])
         print(f"  Confiance moyenne: {avg_conf:.2f}")
         
         # Dernier résultat complet

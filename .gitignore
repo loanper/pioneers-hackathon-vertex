@@ -46,3 +46,7 @@ Thumbs.db
 # Temporary files
 /tmp/
 *.tmp
+
+# Google Cloud SDK
+google-cloud-sdk/
+google-cloud-cli-*.tar.gz
