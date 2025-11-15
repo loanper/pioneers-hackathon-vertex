@@ -10,7 +10,7 @@ from fastapi.responses import JSONResponse
 import logging
 import os
 
-from api.routers import health, upload, sessions, reports, orchestration
+from api.routers import health, upload, sessions, reports, orchestration, live_prosody
 
 # =============================================================================
 # Configuration
@@ -90,6 +90,9 @@ app.include_router(reports.router, prefix="/v1", tags=["Reports"])
 
 # Orchestration (run pipeline)
 app.include_router(orchestration.router, prefix="/v1", tags=["Orchestration"])
+
+# Live prosody analysis (WebSocket for real-time emotion detection)
+app.include_router(live_prosody.router, prefix="/v1", tags=["Live Prosody"])
 
 # =============================================================================
 # Startup Event

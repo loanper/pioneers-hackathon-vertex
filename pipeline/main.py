@@ -194,13 +194,16 @@ def download_to_tmp(gcs_uri: str) -> str:
 # =============================================================================
 # Prosody Analysis
 # =============================================================================
-def extract_prosody(local_path: str):
+def extract_prosody(local_path: str, word_count: int = 0):
     """
-    Extract prosodic features from audio:
+    Extract prosodic features from audio with emotion detection:
     - Pitch (fundamental frequency)
     - Energy (RMS)
     - Pauses
+    - Emotional state from prosody
     """
+    from prosody_emotion_analyzer import ProsodyEmotionAnalyzer
+    
     # Load audio
     y, sr = librosa.load(local_path, sr=16000, mono=True)
     duration = librosa.get_duration(y=y, sr=sr)
@@ -226,6 +229,10 @@ def extract_prosody(local_path: str):
     pause_count = int(np.sum((~pauses[:-1] & pauses[1:])))
     pause_total = float(np.sum(pauses) / sr)
     
+    # Emotion analysis from prosody
+    analyzer = ProsodyEmotionAnalyzer()
+    emotion_result = analyzer.analyze_audio(y, sr, word_count=word_count)
+    
     return {
         "sr": sr,
         "duration_sec": duration,
@@ -235,6 +242,11 @@ def extract_prosody(local_path: str):
         "energy_std": energy_std,
         "pause_count": pause_count,
         "pause_total_sec": pause_total,
+        # Add emotion analysis
+        "prosody_emotion": emotion_result["dominant_emotion"],
+        "prosody_confidence": emotion_result["confidence"],
+        "prosody_top_emotions": emotion_result["top_emotions"],
+        "vocal_characteristics": emotion_result["vocal_characteristics"]
     }
 
 
@@ -389,14 +401,14 @@ def main():
         # 2. Prosody Analysis
         print(f"  🎵 Analyzing prosody...")
         local = download_to_tmp(uri)
-        pf = extract_prosody(local)
+        pf = extract_prosody(local, word_count=len(words))
         pf.update({
             "session_id": sid,
             "created_at": dt.datetime.now(dt.timezone.utc).isoformat()
         })
         prosodies.append(pf)
         upload_json(BUCKET_ANALYTICS, f"{week_key}/{sid}/prosody_features.json", pf)
-        print(f"  ✅ Prosody: pitch={pf['pitch_mean']:.1f}Hz, energy={pf['energy_mean']:.4f}")
+        print(f"  ✅ Prosody: pitch={pf['pitch_mean']:.1f}Hz, energy={pf['energy_mean']:.4f}, emotion={pf['prosody_emotion']} ({pf['prosody_confidence']:.2f})")
         
         # 3. NLU - Events & Emotions
         print(f"  🧠 Extracting events & emotions...")
