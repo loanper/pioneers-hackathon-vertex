@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Transcript",
+  "type": "object",
+  "properties": {
+    "session_id": {"type": "string"},
+    "audio_uri": {"type": "string"},
+    "language_code": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "transcript": {"type": "string"},
+    "words": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "start": {"type": "number"},
+          "end": {"type": "number"},
+          "word": {"type": "string"},
+          "confidence": {"type": "number"}
+        },
+        "required": ["start", "end", "word"]
+      }
+    }
+  },
+  "required": ["session_id", "audio_uri", "language_code", "created_at", "transcript"]
+}

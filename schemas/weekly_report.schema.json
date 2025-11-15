@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WeeklyReport",
+  "type": "object",
+  "properties": {
+    "week": {"type": "string"},
+    "user_tz": {"type": "string"},
+    "sessions_count": {"type": "integer"},
+    "emotion_index": {"type": "number", "minimum": 0, "maximum": 100},
+    "trend": {"type": "string", "enum": ["up", "down", "flat"]},
+    "session_summaries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "session_id": {"type": "string"},
+          "emotion_index": {"type": "number", "minimum": 0, "maximum": 100},
+          "events": {"type": "array", "items": {"type": "string"}},
+          "emotions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {"type": "string"},
+                "confidence": {"type": "number"}
+              }
+            }
+          }
+        },
+        "required": ["session_id", "emotion_index"]
+      }
+    },
+    "highlights": {"type": "array", "items": {"type": "string"}},
+    "prosody_summary": {
+      "type": "object",
+      "properties": {
+        "pitch_mean": {"type": "number"},
+        "energy_mean": {"type": "number"},
+        "pause_rate": {"type": "number"}
+      }
+    }
+  },
+  "required": ["week", "sessions_count", "emotion_index", "trend", "session_summaries"]
+}

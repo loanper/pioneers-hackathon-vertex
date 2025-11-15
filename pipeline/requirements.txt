@@ -1,0 +1,23 @@
+# Google Cloud
+google-cloud-storage
+google-cloud-speech
+google-cloud-aiplatform
+google-cloud-logging
+google-cloud-run
+google-cloud-iam
+
+# Audio Processing
+librosa
+soundfile
+numpy
+scipy
+
+# Report Generation
+jinja2
+weasyprint
+
+# FastAPI (pour l'API)
+fastapi
+uvicorn[standard]
+pydantic
+python-multipart

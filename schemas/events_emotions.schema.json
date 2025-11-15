@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EventsEmotions",
+  "type": "object",
+  "properties": {
+    "session_id": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "emotion_index": {"type": "number", "minimum": 0, "maximum": 100},
+    "events": {"type": "array", "items": {"type": "string"}},
+    "emotions": {
+      "type": "array",
+      "items": {"type": "object", "properties": {
+        "label": {"type": "string"},
+        "confidence": {"type": "number"}
+      }, "required": ["label"]}
+    },
+    "themes": {"type": "array", "items": {"type": "string"}}
+  },
+  "required": ["session_id", "created_at", "emotion_index", "events", "emotions"]
+}

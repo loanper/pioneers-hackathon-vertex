@@ -1,0 +1,17 @@
+# Mental Journal - Workflows
+main:
+  params: [week]
+  steps:
+  - callRunJob:
+      call: http.post
+      args:
+        url: ${"https://run.googleapis.com/apis/run.googleapis.com/v1/projects/" + sys.get_env("GOOGLE_CLOUD_PROJECT") + "/locations/europe-west1/jobs/mj-weekly-pipeline:run"}
+        auth:
+          type: OAuth2
+        body:
+          overrides:
+            containerOverrides:
+              - args: [${week}]
+      result: r
+  - returnResult:
+      return: ${r.body}

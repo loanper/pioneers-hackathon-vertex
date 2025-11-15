@@ -1,0 +1,96 @@
+# Smithery.ai configuration
+startCommand:
+  type: stdio
+  # Increase timeout to prevent early disconnection
+  timeout: 120000  # 120 seconds timeout for initialization
+  # Increase ping interval to ensure connection stays alive
+  pingInterval: 5000  # 5 seconds between pings
+  # Increase ping timeout to be more lenient
+  pingTimeout: 30000  # 30 seconds before timing out a ping
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP
+    type: object
+    properties:
+      projectId:
+        type: string
+        description: "Google Cloud Project ID (optional)"
+      debug:
+        type: boolean
+        description: "Enable debug logging for troubleshooting"
+        default: false
+      lazyAuth:
+        type: boolean
+        description: "Enable lazy loading of authentication (recommended for Smithery). Authentication will still be required but will be initialized when first needed rather than at startup."
+        default: true
+      credentials:
+        oneOf:
+          - type: object
+            properties:
+              clientEmail:
+                type: string
+                description: "Google Cloud service account client email"
+              privateKey:
+                type: string
+                description: "Google Cloud service account private key"
+            required: ["clientEmail", "privateKey"]
+            description: "Google Cloud service account credentials as environment variables"
+          - type: object
+            properties:
+              keyFilePath:
+                type: string
+                description: "Path to Google Cloud service account key file (JSON)"
+            required: ["keyFilePath"]
+            description: "Google Cloud service account credentials as a key file"
+          - type: string
+            description: "Path to Google Cloud service account key file (JSON) - direct string format"
+        description: "Google Cloud service account credentials (optional)"
+    additionalProperties: false
+  commandFunction:
+    # A function that produces the CLI command to start the MCP on stdio
+    |-
+    (config) => {
+      const env = {};
+      
+      // Add Google Cloud project ID if provided
+      if (config.projectId) {
+        env.GOOGLE_CLOUD_PROJECT = config.projectId;
+      }
+      
+      // Enable debug logging if requested
+      if (config.debug) {
+        env.DEBUG = "true";
+      }
+      
+      // Set authentication mode (lazy loading)
+      if (config.lazyAuth !== false) { // Default to true if not specified
+        env.LAZY_AUTH = "true";
+      }
+      
+      // Add Google Cloud credentials if provided
+      if (config.credentials) {
+        // Handle different credential formats
+        if (typeof config.credentials === 'string') {
+          // Direct string path format (used by Claude Desktop)
+          env.GOOGLE_APPLICATION_CREDENTIALS = config.credentials;
+        } else if (typeof config.credentials === 'object') {
+          // Method 1: Using client email and private key directly
+          if (config.credentials.clientEmail && config.credentials.privateKey) {
+            env.GOOGLE_CLIENT_EMAIL = config.credentials.clientEmail;
+            env.GOOGLE_PRIVATE_KEY = config.credentials.privateKey;
+          }
+          
+          // Method 2: Using a key file (standard approach)
+          if (config.credentials.keyFilePath) {
+            env.GOOGLE_APPLICATION_CREDENTIALS = config.credentials.keyFilePath;
+          }
+        }
+      }
+      
+      return {
+        "command": "node",
+        "args": [
+          "dist/index.js"
+        ],
+        "env": env
+      };
+    }

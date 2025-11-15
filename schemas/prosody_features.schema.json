@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ProsodyFeatures",
+  "type": "object",
+  "properties": {
+    "session_id": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "sr": {"type": "integer"},
+    "duration_sec": {"type": "number"},
+    "pitch_mean": {"type": "number"},
+    "pitch_std": {"type": "number"},
+    "energy_mean": {"type": "number"},
+    "energy_std": {"type": "number"},
+    "pause_count": {"type": "integer"},
+    "pause_total_sec": {"type": "number"}
+  },
+  "required": ["session_id", "created_at", "sr", "duration_sec"]
+}
