@@ -521,4 +521,11 @@ gsutil cp gs://pz-reports-build-unicorn25par-4813/2025-W42/weekly_report.pdf ./
 ✅ Google Cloud MCP configuré  
 
 **Test Results:** `exitCode=0` — Transcription ✅ | Prosody ✅ | NLU ✅ | Reports ✅ | Emotion Index: **50.0/100**
+---
+
+## 🤝 Contributing
+
+This project was developed for the **Paris AI Hackathon - Station F (Pioneers AI Lab – Google/Mistral/ElevenLabs/n8n)**.
+**Contact**: [queriauxrobin@gmail.com](mailto:queriauxrobin@gmail.com) 
+[loanperrard@gmail.com](mailto:loanperrard@gmail.com)
 
