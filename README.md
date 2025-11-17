@@ -522,18 +522,3 @@ gsutil cp gs://pz-reports-build-unicorn25par-4813/2025-W42/weekly_report.pdf ./
 
 **Test Results:** `exitCode=0` — Transcription ✅ | Prosody ✅ | NLU ✅ | Reports ✅ | Emotion Index: **50.0/100**
 
----
-
-## 🤝 Contributing
-
-This project was developed for the **GCPU Hackathon 2025 – Mental Health Journal**.
-
----
-
-## 📄 License
-
-Private repository — **All rights reserved**
-
-**GCP Project**: `mental-journal-dev`
-**Region**: `europe-west1`
-**Contact**: [queriauxrobin@gmail.com](mailto:queriauxrobin@gmail.com)
